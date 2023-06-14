@@ -1,9 +1,11 @@
-import DashboardBox from "@/components/DashboardBox";
+import DashboardBox from "@/client/components/DashboardBox";
+import { useGetKpisQuery } from "@/client/state/api";
 import React from "react";
 
 type Props = {};
 
 function Row1({}: Props) {
+   const { data } = useGetKpisQuery();
    return (
       <>
          <DashboardBox gridArea="a"></DashboardBox>
