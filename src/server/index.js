@@ -9,9 +9,10 @@ import kpiRoutes from "./routes/kpi.js";
 import KPI from "./models/KPI.js";
 import { kpis } from "./data/data.js";
 
-// CONFIGURATIONS
+/* CONFIGURATIONS */
 dotenv.config();
 const app = express();
+app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
@@ -19,14 +20,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-// ROUTES
+/* ROUTES */
 app.use("/kpi", kpiRoutes);
 
-// MONGOOSE SETUP
+/* MONGOOSE SETUP */
 const PORT = process.env.PORT || 9000;
-mongoose.Promise = global.Promise;
-mongoose
-  .connect(process.env.MONGO_URL, {
+mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -34,8 +33,8 @@ mongoose
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ADD DATA ONE TIME ONLY OR AS NEEDED */
-    // await mongoose.connection.db.dropDatabase();
-    // KPI.insertMany(kpis);
+    await mongoose.connection.db.dropDatabase();
+    KPI.insertMany(kpis);
     // Product.insertMany(products);
     // Transaction.insertMany(transactions);
   })
