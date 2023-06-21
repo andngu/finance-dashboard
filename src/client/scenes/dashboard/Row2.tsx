@@ -1,9 +1,12 @@
 import DashboardBox from "@/client/components/DashboardBox";
+import { useGetProductsQuery } from "@/client/state/api";
 import React from "react";
 
 type Props = {};
 
 const Row2 = (props: Props) => {
+   const { data } = useGetProductsQuery();
+   console.log("data:", data);
    return (
       <>
          <DashboardBox gridArea="d"></DashboardBox>
