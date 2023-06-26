@@ -5,6 +5,7 @@ import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "@/client/scenes/navbar";
 import Dashboard from "@/client/scenes/dashboard";
+import Predictions from "@/client/scenes/predictions";
 
 function App() {
    const theme = useMemo(() => createTheme(themeSettings), []);
@@ -18,7 +19,7 @@ function App() {
                      <NavBar />
                      <Routes>
                         <Route path="/" element={<Dashboard />} />
-                        <Route path="/predictions" element={<div>predictions page</div>} />
+                        <Route path="/predictions" element={<Predictions />} />
                      </Routes>
                   </Box>
                </ThemeProvider>

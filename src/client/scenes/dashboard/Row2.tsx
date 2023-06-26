@@ -6,8 +6,6 @@ import { Box, Typography, useTheme } from "@mui/material";
 import React, { useMemo } from "react";
 import { CartesianGrid, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, Scatter, ScatterChart, Tooltip, XAxis, YAxis, ZAxis } from "recharts";
 
-type Props = {};
-
 const pieData = [
    { name: "Group A", value: 600 },
    { name: "Group B", value: 400 },
