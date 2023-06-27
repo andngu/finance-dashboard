@@ -4,7 +4,7 @@ import FlexBetween from "@/client/components/FlexBetween";
 import { useGetKpisQuery, useGetProductsQuery, useGetTransactionsQuery } from "@/client/state/api";
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { Cell, Pie, PieChart } from "recharts";
 
 const Row3 = () => {
@@ -136,7 +136,7 @@ const Row3 = () => {
                   <Box key={`${data[0].name}-${i}`}>
                      <PieChart width={110} height={100}>
                         <Pie data={data} innerRadius={18} outerRadius={35} paddingAngle={2} stroke="none" dataKey="value">
-                           {data.map((entry, index) => (
+                           {data.map((_, index) => (
                               <Cell key={`cell-${index}`} fill={pieColors[index]} />
                            ))}
                         </Pie>

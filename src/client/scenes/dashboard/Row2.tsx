@@ -3,7 +3,7 @@ import DashboardBox from "@/client/components/DashboardBox";
 import FlexBetween from "@/client/components/FlexBetween";
 import { useGetKpisQuery, useGetProductsQuery } from "@/client/state/api";
 import { Box, Typography, useTheme } from "@mui/material";
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { CartesianGrid, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, Scatter, ScatterChart, Tooltip, XAxis, YAxis, ZAxis } from "recharts";
 
 const pieData = [
@@ -87,7 +87,7 @@ const Row2 = () => {
                   }}
                >
                   <Pie data={pieData} innerRadius={18} outerRadius={38} paddingAngle={2} stroke="none" dataKey="value">
-                     {pieData.map((entry, index) => (
+                     {pieData.map((_, index) => (
                         <Cell key={`cell-${index}`} fill={pieColors[index]} />
                      ))}
                   </Pie>
