@@ -1,7 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 import { useEffect, useMemo, useState } from "react";
 import { themeSettings } from "./theme";
-import { Box, CssBaseline, ThemeProvider, Backdrop, CircularProgress, Typography } from "@mui/material";
+import { Box, CssBaseline, ThemeProvider, CircularProgress, Typography } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useGetKpisQuery, useGetProductsQuery, useGetTransactionsQuery } from "@/client/state/api";
 import NavBar from "@/client/scenes/navbar";
@@ -35,25 +35,24 @@ function App() {
             <BrowserRouter>
                <ThemeProvider theme={theme}>
                   <CssBaseline />
-                  <Box width="100%" height="100%" padding="1rem 2rem 4rem 2rem">
-                     <NavBar />
-                     <Routes>
-                        <Route path="/" element={<Dashboard />} />
-                        <Route path="/predictions" element={<Predictions />} />
-                     </Routes>
-                  </Box>
-                  <Backdrop
-                     open={loading}
-                     sx={{
-                        color: "#fff",
-                        zIndex: (theme) => theme.zIndex.drawer + 1,
-                     }}
-                  >
-                     <Box maxWidth="50%" display="flex" flexDirection="column" alignItems="center" gap={5}>
-                        <CircularProgress size="10rem" color="inherit" />
-                        {showTypography && <Typography variant="h1">Please note that when starting up our website for the first time, data loading may be delayed as the backend takes a while to spin up again due to inactivity on the free version of where it's hosted.</Typography>}
+                  {loading ? (
+                     <Box width="100%" height="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center" gap={5}>
+                        <CircularProgress size="10rem" />
+                        {showTypography && (
+                           <Typography color="white" width="50%" variant="h1">
+                              Please note that when starting up our website for the first time, data loading may be delayed as the backend takes a while to spin up again due to inactivity on the free version of where it's hosted
+                           </Typography>
+                        )}
                      </Box>
-                  </Backdrop>
+                  ) : (
+                     <Box width="100%" height="100%" padding="1rem 2rem 4rem 2rem">
+                        <NavBar />
+                        <Routes>
+                           <Route path="/" element={<Dashboard />} />
+                           <Route path="/predictions" element={<Predictions />} />
+                        </Routes>
+                     </Box>
+                  )}
                </ThemeProvider>
             </BrowserRouter>
          </div>
