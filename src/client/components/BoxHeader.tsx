@@ -6,7 +6,7 @@ type Props = {
    title: string;
    icon?: React.ReactNode;
    subtitle?: string;
-   sideText: string;
+   sideText?: string;
 };
 
 const BoxHeader = ({ title, icon, subtitle, sideText }: Props) => {
