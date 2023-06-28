@@ -50,7 +50,7 @@ function Row1() {
    return (
       <>
          <DashboardBox gridArea="a">
-            <BoxHeader title="Revenue and Expenses" subtitle="top line represents revenue, bottome line represents expenses" sideText="+4%" />
+            <BoxHeader title="Revenue and Expenses" subtitle="top line represents revenue, bottome line represents expenses" sideText="+25%" />
             <ResponsiveContainer width="100%" height="100%">
                <AreaChart
                   width={500}
